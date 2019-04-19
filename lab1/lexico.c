@@ -78,7 +78,7 @@ int main(int argc, char** argv)
 							i = i+1;
 						}
 						//int
-						if(linea[i+1]=='n' && linea[i+2]=='t'){
+						else if(linea[i+1]=='n' && linea[i+2]=='t'){
 							fprintf(archivo_salida, "%s\n","INT" );
 							//printf("%s\n","encontre int" );
 							i= i+2;
@@ -362,6 +362,9 @@ int main(int argc, char** argv)
 					case '/':
 						fprintf(archivo_salida, "%s\n","/" );
 						//printf("%s\n","/" );
+						break;
+					case '?':
+						fprintf(archivo_salida, "%s\n", "?");
 						break;
 				}
 			}			
