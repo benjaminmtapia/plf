@@ -1,0 +1,26 @@
+main(argc, argv){
+   static float soy_UnaVariable = 5;
+   float *soyUnPuntero = (char*)malloc(sizeof(char) * 5);
+   register
+   extern
+   if(soyUnPuntero == NULL){
+      return;
+   }
+   int i;
+   for(i = 0; i < 5; i++){
+      soyUnPuntero[i] = soy_UnaVariable;
+   }
+   int total = 0;
+   while(i > 0){
+      total = total + soyUnPuntero[i];
+      if(total%5 != 0){
+            break;
+      }
+      else{
+            continue;
+      }
+      i--;
+   }
+   default
+   return *soyUnPuntero;
+}

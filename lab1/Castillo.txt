@@ -1,0 +1,18 @@
+int main(int* args, int b){
+
+	for( int i = 0; i<10; i++){
+		char *string;
+		if(i == 0){
+			printf();
+			}
+		}
+	while(1){
+	}
+	auto short int t= 1;
+	static double e = 2;
+	register float w= 3;
+	extern long b = 4;
+	unsigned int b = 2;	
+	int *a = sizeof(t);
+	return 0;
+}

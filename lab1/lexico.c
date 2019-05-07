@@ -117,7 +117,7 @@ int main(int argc, char** argv)
 						else if(linea[i+1]=='e' && linea[i+2]=='t' && linea[i+3]=='u' && linea[i+4]=='r' && linea[i+5]=='n'){
 							fprintf(archivo_salida, "%s\n","RETURN" );
 							//printf("%s\n","encontre return" );
-							i=i+6;
+							i=i+5;
 						}
 						break;
 					case 's':
