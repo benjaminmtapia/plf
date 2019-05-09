@@ -43,9 +43,9 @@ int main(int argc, char** argv)
 		int contador = 0;
 		char caracter;
 		while(!feof(archivo_entrada)){
-			linea = fgets(linea,25000,archivo_entrada);
+			linea = fgets(buffer,25000,archivo_entrada);
 			largo = strlen(linea);
-			for (i = 0; i < largo; ++i)
+			for (i = 0; i < largo; i++)
 			{
 				caracter = linea[i];
 				switch(caracter){
@@ -369,7 +369,7 @@ int main(int argc, char** argv)
 				}
 			}			
 		}	
-		fclose(archivo_salida);
 		fclose(archivo_entrada);
+		fclose(archivo_salida);
 	return 0;
 }
