@@ -366,8 +366,6 @@ int main(int argc, char** argv)
 					case '?':
 						fprintf(archivo_salida, "%s\n", "?");
 						break;
-					case NULL:
-						i++;
 				}
 			}			
 		}	

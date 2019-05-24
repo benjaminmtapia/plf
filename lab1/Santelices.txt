@@ -1,0 +1,14 @@
+main{
+	(auto , extern; register .+static)
+
+	*={while}:
+
+	do continue : break
+
+	for goto, if else
+	return > defaut; =
+	+ , - / & _ ~ | %
+	short  == int unsigned long float char double
+	!= < <= >= && || !?
+	^ << >> ++ -- 
+}

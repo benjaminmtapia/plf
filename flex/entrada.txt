@@ -1,0 +1,4 @@
+main()()
+auto
+externregisterstatic
+float
