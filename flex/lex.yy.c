@@ -449,7 +449,7 @@ char *yytext;
 #line 2 "lexico.l"
 	#include <stdio.h>
 	#include <stdlib.h>
-	
+
 	FILE* archivo = NULL;
 #line 455 "lex.yy.c"
 
@@ -1794,15 +1794,18 @@ int main()
 
 int main(int argc, char** argv){
 	if(argc == 1){
-		printf("%s\n%s", "Error: Faltan parametros.", "Uso: lexico.exe archivo_entrada archivo_salida");
+		printf("Error: Faltan par%cmetros. \n",160);
+		printf("%s\n","Uso correcto: lexico.exe archivo_entrada archivo_salida");
 		return 1;
 	}
 	else if ( argc == 2){
-		printf("%s\n%s", "Error: Falta parametro.","Uso: lexico.exe archivo_entrada archivo_salida");
+		printf("Error: Falta par%cmetro.\n",160);
+		printf("%s\n","Uso: lexico.exe archivo_entrada archivo_salida");
 		return 1;
 	}
 	else if ( argc > 3){
-		printf("%s\n%s", "Error: Demasiados parametros.", "Uso: lexico.exe archivo_entrada archivo_salida");
+		printf("Error: Demasiados par%cmetros.\n", 160);
+		printf("%s\n","Uso: lexico.exe archivo_entrada archivo_salida");
 		return 1;
 	}
 	else if( argc == 3){

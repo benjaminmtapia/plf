@@ -1,11 +1,12 @@
 %{
 int lineas = 0, caracteres = 0;
+char* salida = NULL;
 %}
 
 %option noyywrap
 
 %%
-\n {lineas++; caracteres++;}
+\n {printf("salto de linea\n");exit (1);}
 . {caracteres++;}
 %%
 

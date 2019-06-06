@@ -1,7 +1,7 @@
 %{
 	#include <stdio.h>
 	#include <stdlib.h>
-	
+
 	FILE* archivo = NULL;
 %}
 
@@ -17,7 +17,7 @@ operador_nivel_bit "&"|"|"|"^"|"<<"|">>"
 operador_incremento "++"
 operador_decremento "--"
 %%
-\n 
+\n
 [(] {fprintf(archivo,"%s\n","(");}
 [)] {fprintf(archivo,"%s\n",")");}
 [*] {fprintf(archivo,"%s\n","*");}
@@ -59,28 +59,31 @@ operador_decremento "--"
 {operador_aritmetico} {fprintf(archivo,"%s\n",yytext);}
 {operador_logico} {fprintf(archivo,"%s\n",yytext);}
 <<EOF>> {yyterminate();}
-. 
+.
 %%
 int main(int argc, char** argv){
 	if(argc == 1){
-		printf("%s\n%s", "Error: Faltan parametros.", "Uso: lexico.exe archivo_entrada archivo_salida");
+		printf("Error: Faltan par%cmetros. \n",160);
+		printf("%s\n","Uso correcto: lexico.exe archivo_entrada archivo_salida");
 		return 1;
 	}
 	else if ( argc == 2){
-		printf("%s\n%s", "Error: Falta parametro.","Uso: lexico.exe archivo_entrada archivo_salida");
+		printf("Error: Falta par%cmetro.\n",160);
+		printf("%s\n","Uso: lexico.exe archivo_entrada archivo_salida");
 		return 1;
 	}
 	else if ( argc > 3){
-		printf("%s\n%s", "Error: Demasiados parametros.", "Uso: lexico.exe archivo_entrada archivo_salida");
+		printf("Error: Demasiados par%cmetros.\n", 160);
+		printf("%s\n","Uso: lexico.exe archivo_entrada archivo_salida");
 		return 1;
 	}
 	else if( argc == 3){
 		if(!fopen(argv[1],"r")){
-			printf("%s\n", "Error: El archivo de entrada no existe");
+			printf("%s\n", "Error: El archivo de entrada no existe.");
 			return 1;
 		}
 		else if(fopen(argv[2],"r")){
-			printf("%s\n","Error: El archivo de salida ya existe");
+			printf("%s\n","Error: El archivo de salida ya existe.");
 			return 1;
 		}
 		yyin = fopen(argv[1],"r");
