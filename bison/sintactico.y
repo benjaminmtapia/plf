@@ -8,6 +8,8 @@ extern FILE* yyin;
 extern char *yytext;
 void yyerror(char *s);
 %}
+%token IDENTIFICADOR
+%token REAL
 %token IGUAL
 %token OR
 %token MENOR
@@ -47,22 +49,26 @@ void yyerror(char *s);
 %%
 programa: MAIN '(' D1 ')' D2 '{' D3 D4 '}';
 D1: par_lin_ord
-    |  ;
-D2: dec_lin_ord |  ;
-D3: dec_var_loc |  ;
-D4: sentencia D5 |  ;
-D5: D4 ;
+ |  ;
+D2: dec_lin_ord
+ |  ;
+D3: dec_var_loc
+ |  ;
+D4: sentencia D5
+ |  ;
+D5: D4
+ |  ;
 par_lin_ord: IDENTIFICADOR ',' IDENTIFICADOR ;
 dec_lin_ord: declaracion declaracion ;
 dec_var_loc: declaracion D6 ;
-D6: dec_var_loc |  ;
+D6: dec_var_loc | ;
 declaracion: D7 D8 ;
 D7: A1 | A1 tipo | tipo ;
 A1: esp_alm_var A2 ;
-A2: A1 |  ;
+A2: A1 | ;
 D8: especificacion_declaracion B1 B2 ';' ;
-B1: inicializacion_variable |  ;
-B2: ',' D8 |  ;
+B1: inicializacion_variable | ;
+B2: ',' D8 | ;
 esp_alm_var: AUTO | EXTERN | REGISTER | STATIC ;
 especificacion_declaracion: nombre_variable
   | declaracion_puntero
@@ -87,7 +93,7 @@ D13: expresion ;
 D14: ',' |  ;
 sentencia_goto: GOTO etiqueta ';' ;
 sentencia_if: IF '(' expresion ')' sentencia D15 ;
-D15: ELSE sentencia D16 |  ;
+D15: ELSE sentencia D16 ;
 D16: D15 |  ;
 etiqueta: IDENTIFICADOR ':' ;
 sentencia_NULL: ';' ;
@@ -109,7 +115,7 @@ tipo: INT | SHORT D18 | UNSIGNED D18 | LONG D18 | LONG FLOAT | CHAR | DOUBLE | F
 D18: INT |  ;
 operador_relacional: IGUAL | DISTINTO | '<' | '>' | MENOR_IGUAL | MAYOR_IGUAL ;
 operador_logico: AND | OR | '!' ;
-operador_expresion: nombre | constante_numerica | CONSTANTE_CARACTER | CONSTANTE_CADENA | '(' expresion ')' ;
+operando_expresion: nombre | constante_numerica | CONSTANTE_CARACTER | CONSTANTE_CADENA | '(' expresion ')' ;
 constante_numerica: ENTERO | REAL ;
 expresion_ternaria: '(' expresion ')' '?' expresion ':' ;
 operador_aritmetico: '*' | '-' | '+' | '/' | '%' ;
@@ -124,36 +130,3 @@ expresion_puntero: expresion ;
 operando_asignacion: D19 '=' ;
 D19: operador_aritmetico | operador_nivel_bit ;
 %%
-void yyerror(char *s) {
-	printf("Error sint%cctico en la l%cnea: %d\n",160,161,yylineno);
-	exit(-1);
-
-}
-
-void main(int argc, char** argv)
-{
-  if(argc == 1){
-    printf("Error: Falta par%cmetro.\n",160);
-    printf("Uso: sintactico.exe archivo");
-    exit(1);
-  }
-  else if(!fopen(argv[1])){
-    printf("Error: El archivo no existe.");
-    exit(1);
-  }
-  else if(argc > 2){
-    printf("Error: Demasiados par%cmetros",160);
-    printf("Uso: sintactico.exe archivo");
-    exit(1);
-  }
-  else if(argc == 2){
-    int analizador_sintactico = yyparse();
-    if(analizador_sintactico = 0){
-      printf("An%clisis sint%cctico concluido.\n",160,160);
-      fclose(yyin);
-      exit(0);
-    }
-  }
-yyparse();
-printf("0k\n");
-}
